@@ -80,20 +80,20 @@
         }
     </style>
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, getDoc, setDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
         
         // Substitua ESTE OBJETO INTEIRO com o seu próprio firebaseConfig
         const firebaseConfig = {
-            apiKey: "sua-apiKey-aqui",
-            authDomain: "seu-authDomain-aqui",
-            projectId: "seu-projectId-aqui",
-            storageBucket: "seu-storageBucket-aqui",
-            messagingSenderId: "seu-messagingSenderId-aqui",
-            appId: "seu-appId-aqui",
-            measurementId: "seu-measurementId-aqui"
+            apiKey: "AIzaSyBbNd4tjAe_vO2E4vyqzIyikr5pY2dH7eo",
+            authDomain: "nextbotio.firebaseapp.com",
+            projectId: "nextbotio",
+            storageBucket: "nextbotio.firebasestorage.app",
+            messagingSenderId: "67496804248",
+            appId: "1:67496804248:web:aede87f1e317a837d1f5ed",
+            measurementId: "G-7DT6SN5KZ9"
         };
         
         const app = initializeApp(firebaseConfig);
