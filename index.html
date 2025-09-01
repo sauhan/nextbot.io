@@ -85,9 +85,17 @@
         import { getFirestore, doc, getDoc, setDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
         
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-
+        // Substitua ESTE OBJETO INTEIRO com o seu próprio firebaseConfig
+        const firebaseConfig = {
+            apiKey: "sua-apiKey-aqui",
+            authDomain: "seu-authDomain-aqui",
+            projectId: "seu-projectId-aqui",
+            storageBucket: "seu-storageBucket-aqui",
+            messagingSenderId: "seu-messagingSenderId-aqui",
+            appId: "seu-appId-aqui",
+            measurementId: "seu-measurementId-aqui"
+        };
+        
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
@@ -117,12 +125,11 @@
                 authSection.classList.add('hidden');
                 
                 try {
-                    const docRef = doc(db, "artifacts", appId, "public", "data", "allowed_users");
+                    const docRef = doc(db, "artifacts", firebaseConfig.projectId, "public", "data", "allowed_users");
                     const docSnap = await getDoc(docRef);
                     let allowedEmails = docSnap.exists() ? docSnap.data().course_emails || [] : [];
                     let adminEmails = docSnap.exists() ? docSnap.data().admin_emails || [] : [];
 
-                    // Se não houver nenhum usuário no banco de dados, o primeiro a logar se torna admin.
                     if (!docSnap.exists() || (allowedEmails.length === 0 && adminEmails.length === 0)) {
                         await setDoc(docRef, { course_emails: [user.email], admin_emails: [user.email] });
                         allowedEmails.push(user.email);
@@ -206,7 +213,7 @@
             }
 
             try {
-                const docRef = doc(db, "artifacts", appId, "public", "data", "allowed_users");
+                const docRef = doc(db, "artifacts", firebaseConfig.projectId, "public", "data", "allowed_users");
                 const docSnap = await getDoc(docRef);
                 let allowedEmails = docSnap.exists() ? docSnap.data().course_emails || [] : [];
                 let adminEmails = docSnap.exists() ? docSnap.data().admin_emails || [] : [];
@@ -268,22 +275,18 @@
                     <h2 id="aula1">Aula 1: Criação do bot e 'Hello World!'</h2>
                     <h3>Introdução ao JavaScript e ao Discord</h3>
                     <p>Para criar um bot com JavaScript, você usará o **Node.js** e a biblioteca **discord.js**. O Node.js é o ambiente que permite executar o JavaScript fora do navegador, e a `discord.js` é a ferramenta que simplifica a comunicação com o Discord.</p>
-                    <!-- Conteúdo simplificado para demonstração -->
                 </div>
                 <div class="step-card">
                     <h2 id="aula2">Aula 2: Comandos Básicos</h2>
                     <p>Agora vamos criar comandos básicos que respondem a mensagens com prefixo (como `!`).</p>
-                    <!-- Conteúdo simplificado para demonstração -->
                 </div>
                 <div class="step-card">
                     <h2 id="aula3">Aula 3: Banco de dados para bots</h2>
                     <p>Para armazenar dados permanentemente (como uma contagem de comandos), usaremos um arquivo JSON para simular um banco de dados.</p>
-                    <!-- Conteúdo simplificado para demonstração -->
                 </div>
                 <div class="step-card">
                     <h2 id="aula4">Aula 4: Eventos</h2>
                     <p>Além de comandos, os bots podem responder a eventos que acontecem no servidor, como novas mensagens ou mudanças de estado de voz.</p>
-                    <!-- Conteúdo simplificado para demonstração -->
                 </div>
                 <div class="step-card">
                     <h2 id="arquivosfinais">Arquivos Finais do Projeto</h2>
